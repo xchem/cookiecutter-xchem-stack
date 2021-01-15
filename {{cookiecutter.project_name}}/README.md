@@ -1,23 +1,9 @@
-# cookiecutter-xchem-stack Template
+# {{cookiecutter.project_name}}
 
-## Using the Template
-To run the template you need to create an environment that has both django and cookiecutter instead.
+AUTHOR: {{cookiecutter.project_author}}
 
-In Python:
-```python
-from cookiecutter.main import cookiecutter
-from django.utils.crypto import get_random_string
+LICENSE: {{cookiecutter.project_license}}
 
-cookiecutter(
-    'cookiecutter-xchem-stack',
-    extra_context={'secretkey': get_random_string(50)}
-)
-```
-
-Alternatively run (from command line):
-```bash
-python ./cookiecutter.py
-```
 
 ## Building Container and Deploying to Kubernetes
 We have included a Framework Dockerfile and Kubernetes yaml file that should work out of box with minor configuration.

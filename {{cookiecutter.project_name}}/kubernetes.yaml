@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{cookiecutter.project_name}}-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{cookiecutter.project_name}}
+  template:
+    metadata:
+      labels:
+        app: {{cookiecutter.project_name}}
+    spec:
+      securityContext:
+        runAsUser: __CHANGE__
+        runAsGroup: __CHANGE__
+      volumes:
+      - name: dls
+        hostPath:
+          path: /dls
+          type: Directory
+      containers:
+      - name: {{cookiecutter.project_name}}
+        securityContext:
+            privileged: false
+        image: gcr.io/diamond-privreg/xchemapps/{{cookiecutter.project_name}}:latest
+        ports:
+        - name: http
+          containerPort: 8000
+        volumeMounts:
+        - mountPath: /dls
+          name: dls
+          mountPropagation: HostToContainer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{cookiecutter.project_name}}-service
+spec:
+  ports:
+  - name: http
+    port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: {{cookiecutter.project_name}}
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: {{cookiecutter.project_name}}-ingress
+  annotations:
+    nginx.org/websocket-services: "{{cookiecutter.project_name}}-service"
+spec:
+  tls:
+  - hosts:
+    - {{cookiecutter.project_domain}}
+  rules:
+  - host: {{cookiecutter.project_domain}}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{cookiecutter.project_name}}-service
+          servicePort: 8000
