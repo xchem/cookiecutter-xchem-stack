@@ -5,6 +5,23 @@ AUTHOR: {{cookiecutter.project_author}}
 LICENSE: {{cookiecutter.project_license}}
 
 
+## Building the Stack for Devlopment Purposes (for local deployment)
+Install python3 and node, both should be available on DLS (I hope).
+
+We recommend creating conda environment to handle the pythony stuff. After cookiecutting the template, cd into this directory (where `ls` yields  {{cookiecutter.project_name}}, basically where the Dockerfile is aswell.
+```bash
+conda create --name <env_name> python=3.8
+conda activate <env_name>
+
+conda install django djangorestframework django-rest-knox
+# or pip install them
+
+npm init -y
+npm i -D webpack webpack-cli @babel/core babel-loader @babel/preset-env @babel/preset-react babel-plugin-transform-class-properties
+npm i react react-dom prop-types axios react-dom react-redux redux redux-devtools-extension redux-thunk remote-redux-devtools
+```
+
+
 ## Building Container and Deploying to Kubernetes
 We have included a Framework Dockerfile and Kubernetes yaml file that should work out of box with minor configuration.
 If you require additional packages and tools please edit the Docker file as you go to save problems later on.
