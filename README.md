@@ -1,25 +1,29 @@
 # cookiecutter-xchem-stack Template
 
 ## Using the Template
+
 To run the template you need to create an environment that has both django and cookiecutter instead.
 
+From the commandline run and fill in the prompts.
+
+```
+cookiecutter https://github.com/xchem/cookiecutter-xchem-stack
+```
+
+### Creating a secret key
+
+Since I don't know how to make the template create a key itself. You will have to generate one randomly.
 In Python:
-```python
-from cookiecutter.main import cookiecutter
+
+```
 from django.utils.crypto import get_random_string
-
-cookiecutter(
-    'cookiecutter-xchem-stack',
-    extra_context={'secretkey': get_random_string(50)}
-)
+print(get_random_string(50))
 ```
 
-Alternatively run (from command line):
-```bash
-python ./cookiecutter.py
-```
+And then copy this value into the corresponding area in the `settings.py` file in the stack folder.
 
 ## Building Container and Deploying to Kubernetes
+
 We have included a Framework Dockerfile and Kubernetes yaml file that should work out of box with minor configuration.
 If you require additional packages and tools please edit the Docker file as you go to save problems later on.
 
@@ -31,17 +35,20 @@ Additionally, we provide two scripts that will rebuild the Dockerfile and commit
 
 Anyway:
 To rebuild the Docker image use:
+
 ```bash
 ./rebuild_docker_image.sh
 ```
 
 To apply the kubenetes config:
+
 ```bash
 module load pollux
 kubectl apply -f kubernetes.yaml
 ```
 
 To redeploy pods
+
 ```bash
 ./redeploy_pods.sh
 ```

@@ -4,5 +4,4 @@
   "project_author": "My Name",
   "project_organization": "Diamond Light Source, i04-1",
   "project_license": "MIT",
-  "secretkey": "{{cookiecutter.secret_key}}"
 }
