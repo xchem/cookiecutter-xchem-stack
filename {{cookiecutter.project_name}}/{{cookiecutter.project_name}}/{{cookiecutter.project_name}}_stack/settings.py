@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # Generate key with: python3 -c 'from django.utils.crypto import get_random_string; print(get_random_string(50))'
-SECRET_KEY = {{cookiecutter.secretkey}}
+SECRET_KEY = __CHANGEME__
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -85,7 +85,7 @@ DATABASES = {
 }
 
 # If you want to use XCDB uncomment this code and add the correct credentials
-#DATABASES = {
+# DATABASES = {
 #    "default": {
 #        "ENGINE": "django.db.backends.postgresql",
 #        "NAME": "",
@@ -94,7 +94,7 @@ DATABASES = {
 #        "HOST": "",
 #        "PORT": "",
 #    }
-#}
+# }
 
 
 # Password validation
