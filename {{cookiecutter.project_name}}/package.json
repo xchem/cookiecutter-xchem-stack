@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development --entry ./{{cookiecutter.project_name}}/{{cookiecutter.project_name}}_stack/{{cookiecutter.project_name}}_frontend/src/index.js -o ./{{cookiecutter.project_name}}/{{cookiecutter.project_name}}_stack/{{cookiecutter.project_name}}_frontend/static/frontend/",
-    "build": "webpack --mode production --entry ./{{cookiecutter.project_name}}/{{cookiecutter.project_name}}_stack/{{cookiecutter.project_name}}_frontend/src/index.js -o ./{{cookiecutter.project_name}}/{{cookiecutter.project_name}}_stack/{{cookiecutter.project_name}}_frontend/static/frontend/"
+    "dev": "webpack --mode development --entry ./{{cookiecutter.project_name}}/{{cookiecutter.project_name}}_frontend/src/index.js -o ./{{cookiecutter.project_name}}/{{cookiecutter.project_name}}_frontend/static/frontend/",
+    "build": "webpack --mode production --entry ./{{cookiecutter.project_name}}/{{cookiecutter.project_name}}_frontend/src/index.js -o ./{{cookiecutter.project_name}}/{{cookiecutter.project_name}}_frontend/static/frontend/"
   },
   "keywords": [],
   "author": "",
