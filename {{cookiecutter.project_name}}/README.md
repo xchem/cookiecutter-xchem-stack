@@ -11,6 +11,7 @@ Install python3 and node, both should be available on DLS (I hope).
 We recommend creating conda environment to handle the pythony stuff. After cookiecutting the template, cd into this directory (where `ls` yields {{cookiecutter.project_name}}, basically where the Dockerfile is aswell.
 
 ```bash
+# Can use previous environment from cookiecutter
 conda create --name <env_name> python=3.8
 conda activate <env_name>
 
@@ -22,6 +23,7 @@ npm i react react-dom prop-types axios react-dom react-redux redux redux-devtool
 npm run dev
 
 cd {{cookiecutter.project_name}}
+python ./manage.py migrate
 python ./manage.py runserver
 ```
 

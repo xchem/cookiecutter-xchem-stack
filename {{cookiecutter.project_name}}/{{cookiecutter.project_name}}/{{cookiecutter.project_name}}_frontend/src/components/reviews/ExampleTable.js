@@ -53,7 +53,7 @@ export class ExampleTable extends Component
 };
 
 const mapStateToProps = state => ({
-    example: state.ExampleReducer.example
+    example: state.exampleReducer.example
 });
 
 export default connect(mapStateToProps, { getExample })(ExampleTable);

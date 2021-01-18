@@ -11,9 +11,11 @@ from django.db import models
 
 import os
 
+
 class Example(models.Model):
-    smiles = models.CharField(max_length=255, blank=True, null=True, db_index=True, unique=True)
-    # Needed if using XCDB!
-    #class Meta:
+    smiles = models.CharField(
+        max_length=255, blank=True, null=True, db_index=True, unique=True)
+    # Uncomment if using xcdb
+    # class Meta:
     #    app_label = 'xchem_db'
     #    db_table = 'compounds'
