@@ -1,7 +1,7 @@
 FROM nikolaik/python-nodejs:python3.8-nodejs15
 
 # Install Everything
-RUN pip install django djangorestframework django-rest-knox
+RUN pip install django djangorestframework django-rest-knox psycopg2
 
 WORKDIR /usr/app
 COPY ./ /usr/app
@@ -16,6 +16,4 @@ RUN cd {{cookiecutter.project_name}}
 
 EXPOSE 8000
 
-RUN python ./manage.py migrate
-
-CMD ['python', 'manage.py', 'runserver', '0.0.0.0:8000']
+CMD cd /usr/app/{{cookiecutter.project_name}} ; python ./manage.py migrate ; python ./manage.py runserver 0.0.0.0:8000
