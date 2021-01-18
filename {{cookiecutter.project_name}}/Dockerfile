@@ -1,4 +1,4 @@
-FROM python3.8-nodejs15
+FROM nikolaik/python-nodejs:python3.8-nodejs15
 
 # Install Everything
 RUN pip install django djangorestframework django-rest-knox
