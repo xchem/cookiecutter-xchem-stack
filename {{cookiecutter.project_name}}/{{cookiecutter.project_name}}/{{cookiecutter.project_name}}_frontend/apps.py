@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class {{cookiecutter.projectname}}FrontendConfig(AppConfig):
-    name = '{{cookiecutter.projectname}}_frontend'
+class {{cookiecutter.project_name}}FrontendConfig(AppConfig):
+    name = '{{cookiecutter.project_name}}_frontend'
