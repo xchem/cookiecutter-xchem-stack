@@ -3,5 +3,8 @@
   "project_domain": "myapp.diamond.ac.uk",
   "project_author": "My Name",
   "project_organization": "Diamond Light Source, i04-1",
-  "project_license": "MIT"
+  "project_license": "MIT",
+  "_copy_without_render": [
+    "*.html"
+]
 }
