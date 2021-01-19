@@ -39,6 +39,67 @@ cd {{cookiecutter.project_name}}
 python ./manage.py migrate
 python ./manage.py runserver
 ```
+## Integration with XCDB in the development environment
+To be able to connect to XCDB, you need the following data and credentials:
+* database name 
+* user name
+* password
+* host IP address
+* port
+
+Make sure you are connected to the Diamond VPN.
+
+Open `settings.py` file from the `{{cookiecutter.project_name}}/{{cookiecutter.project_name}}_stack` directory.
+
+Make sure the following line (listed under `INSTALLED_APPS`) is commented out:
+
+`'django.contrib.sessions',`
+
+Add the necessary credentials to the DATABASES settings. After your changes, it should be uncommented and look like this:
+```python
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "<db name>",
+        "USER": "<user name>",
+        "PASSWORD": "<password>",
+        "HOST": "<ip address>",
+        "PORT": "<port number>"
+    }
+}
+```
+Save your changes in `settings.py`. 
+
+Open `models.py` file from the `{{cookiecutter.project_name}}/{{cookiecutter.project_name}}_backend` folder. Uncomment the following block of code:
+```python
+    class Meta:
+        app_label = 'xchem_db'
+        db_table = 'compounds'
+```
+and save the changes.
+
+Next, install the psycopg2 package. You can try:
+
+`pip install psycopg2`
+
+or, if that results in errors, the alternative:
+
+`pip install psycopg2-binary`
+
+Navigate to your Django project's root directory (the one where `manage.py` file is located), and run:
+
+`python ./manage.py migrate`
+
+To check if your application is connected to XCDB, start the Django development server:
+
+`python ./manage.py runserver`
+
+If everything went right, the server should print a message ending with:
+```
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+```
+In your web browser, navigate to: `http://127.0.0.1:8000/` to see the test page. On the top of the page, you should see an example form, and on the bottom, a table with some id numbers and SMILES strings. It may take a few seconds for the test data to appear, so don't worry if you cannot see it the moment the page loads.
 
 ## Building Container and Deploying to Kubernetes
 
