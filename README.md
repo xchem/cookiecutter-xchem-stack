@@ -1,18 +1,38 @@
 # cookiecutter-xchem-stack Template
 
+## Introduction
+
+This template uses [Cookiecutter](https://cookiecutter.readthedocs.io/en/1.7.2/) to generate boilerplate code needed in XChem's Django/React web applications. It makes it quicker and easier both to set up a development environment for the application, and to deploy it using Docker and Kubernetes.
+
+### The stack includes:
+* [Django](https://www.djangoproject.com/) back-end connected to XChemDB
+* [Django REST Framework](https://www.django-rest-framework.org/) for web APIs
+* [React JS](https://reactjs.org/) front-end
+* [Redux](https://redux.js.org/) to manage application state in React
+* [Axios](https://www.npmjs.com/package/axios) to handle HTTP requests from the front-end side
+* [webpack](https://webpack.js.org/) and [Babel](https://babeljs.io/) [*TODO: purpose*]
+* [*TODO - other elements*]
+
 ## Using the Template
-
-To run the template you need to create an environment that has both django and cookiecutter instead.
-
-From the commandline run and fill in the prompts.
-
+Make sure you have Python 3, Django and Cookiecutter installed in your environment [*TODO: how about npm or Node?*]. To install Django and Cookiecutter with `pip` you can use:
 ```
-cookiecutter https://github.com/xchem/cookiecutter-xchem-stack
+pip install --user cookiecutter
+python -m pip install Django
 ```
+
+( For other installation options or more info, see the official documentation: [Django installation](https://docs.djangoproject.com/en/3.1/topics/install/), [Cookiecutter installation](https://cookiecutter.readthedocs.io/en/1.7.2/installation.html) )
+
+When your environment is ready, navigate to your project directory of choice, and run:
+
+`cookiecutter https://github.com/xchem/cookiecutter-xchem-stack`
+
+You will be prompted to provide some values, with the defaults given in square brackets. To choose a default value, simply press Enter without typing anything.
+
+After providing all the values, you should have a new directory created, named after the `project_name` you just provided. Inside that directory, there will be a `README.md` file. Follow the further setup instructions from that file.
 
 ### Creating a secret key
 
-Since I don't know how to make the template create a key itself. You will have to generate one randomly.
+Since I don't know how to make the template create a key itself, you will have to generate one randomly.
 In Python:
 
 ```
@@ -20,7 +40,7 @@ from django.utils.crypto import get_random_string
 print(get_random_string(50))
 ```
 
-And then copy this value into the corresponding area in the `settings.py` file in the stack folder.
+And then copy this value into the corresponding area in the `settings.py` file in the `{project_name}_stack` folder.
 
 ## Building Container and Deploying to Kubernetes
 
