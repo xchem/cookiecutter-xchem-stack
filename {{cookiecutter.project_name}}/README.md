@@ -4,9 +4,22 @@ AUTHOR: {{cookiecutter.project_author}}
 
 LICENSE: {{cookiecutter.project_license}}
 
-## Building the Stack for Devlopment Purposes (for local deployment)
+## Building the Stack for Development Purposes (for local deployment)
 
 Install python3 and node, both should be available on DLS (I hope).
+
+Generate a secret key to be used by your backend's security features. To get one using Python, run `python`, and inside the interactive session, run the following commands:
+```python
+from django.utils.crypto import get_random_string
+print(get_random_string(50))
+```
+Copy the random string you obtained.
+
+Now, open `settings.py` in the `{{cookiecutter.project_name}}_stack` folder, and set `SECRET_KEY` to your string (do not forget to wrap it in quotes!). The effect should be something like this:
+
+`SECRET_KEY = '<my_random_string>' `
+
+([More on SECRET_KEY in Django](https://docs.djangoproject.com/en/3.1/ref/settings/#secret-key))
 
 We recommend creating conda environment to handle the pythony stuff. After cookiecutting the template, cd into this directory (where `ls` yields {{cookiecutter.project_name}}, basically where the Dockerfile is aswell.
 
