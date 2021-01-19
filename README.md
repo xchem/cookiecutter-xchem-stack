@@ -30,18 +30,6 @@ You will be prompted to provide some values, with the defaults given in square b
 
 After providing all the values, you should have a new directory created, named after the `project_name` you just provided. Inside that directory, there will be a `README.md` file. Follow the further setup instructions from that file.
 
-### Creating a secret key
-
-Since I don't know how to make the template create a key itself, you will have to generate one randomly.
-In Python:
-
-```
-from django.utils.crypto import get_random_string
-print(get_random_string(50))
-```
-
-And then copy this value into the corresponding area in the `settings.py` file in the `{project_name}_stack` folder.
-
 ## Building Container and Deploying to Kubernetes
 
 We have included a Framework Dockerfile and Kubernetes yaml file that should work out of box with minor configuration.
